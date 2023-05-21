@@ -1,18 +1,20 @@
+import axios from 'axios';
+
 async function requestAPI() {
-  const URL_BASE = `https://economia.awesomeapi.com.br/json/last/`;
-  const COIN = 'USD-BRL'
+  const URL_BASE = 'https://economia.awesomeapi.com.br/json/last/';
+  const COIN = 'USD-BRL';
+
   try {
     const url = `${URL_BASE}${COIN}`;
-    const response = await fetch(url);
+    const response = await axios.get(url);
 
-    if (!response.ok) {
+    if (response.status !== 200) {
       throw new Error('Error in data request.');
     }
 
-    const data = await response.json();
-    return data;
+    return response.data;
   } catch (error) {
-    console.error('Erro:', error);
+    console.error('Error:', error);
   }
 }
 
