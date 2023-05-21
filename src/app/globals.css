@@ -115,7 +115,69 @@ body {
   align-items: flex-start;
   padding: 0px;
   gap: 10px;
-
   width: 168px;
   height: 87px;
 }
+
+/* Auto layout Radio */
+
+.auto-layout-radio {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 192px;
+  height: 24px;
+}
+
+.radio-wrapper {
+  margin-bottom: 20px;
+}
+
+.radio-button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* .radio-button:hover {
+  transform: translateY(-2px);
+} */
+
+.radio-button input[type="radio"] {
+  display: none;
+}
+
+.radio-checkmark {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border: 2px solid #008B57;
+  border-radius: 50%;
+}
+
+.radio-checkmark:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #008B57;
+  transition: all 0.2s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked~.radio-checkmark:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* .radio-label {
+  font-size: 16px;
+  font-weight: 600;
+} */

@@ -35,17 +35,25 @@ export default function Home() {
           <input type="text" name="taxState" className="mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1" placeholder="0 %" />
         </div>
       </div>
-      <div>
-        <fieldset>
-          <legend className='mt-5 mb-5 text-sm font-medium text-slate-700'>Tipo de compra</legend>
+      <fieldset className="auto-layout-radio">
+        <legend className='mt-5 mb-5 text-sm font-medium text-slate-700'>Tipo de compra</legend>
+        <div className="radio-wrapper">
+          <label className="radio-button">
+            <input type="radio" name="radio-group" id="option1" checked />
+            <span className="radio-checkmark"></span>
+            <span className="block text-sm font-medium text-slate-700">Dinheiro</span>
+          </label>
+        </div>
 
-          <input id="draft" className="peer/draft" type="radio" name="status" checked />
-          <label htmlFor="draft" className="peer-checked/draft:text-sky-500 text-sm font-medium text-slate-700">Dinheiro</label>
+        <div className="radio-wrapper">
+          <label className="radio-button">
+            <input type="radio" name="radio-group" id="option2" />
+            <span className="radio-checkmark"></span>
+            <span className="block text-sm font-medium text-slate-700">Cartão</span>
+          </label>
+        </div>
+      </fieldset>
 
-          <input id="published" className="peer/published" type="radio" name="status" />
-          <label htmlFor="published" className="peer-checked/published:text-sky-500 text-sm font-medium text-slate-700">Cartão</label>
-        </fieldset>
-      </div>
       <div className='absolute bottom-0 right-0 responsiveDolar'>
         <Image
           src="/dollar.svg"
