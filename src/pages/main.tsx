@@ -62,7 +62,7 @@ export default function Main() {
         <legend className='mt-5 mb-5 text-sm font-medium text-slate-700'>Tipo de compra</legend>
         <div className="radio-wrapper">
           <label className="radio-button">
-            <input type="radio" name="radio-group" id="option1" defaultChecked={true} />
+            <input type="radio" name="radio-group" id="option1" defaultChecked={true} value='money' />
             <span className="radio-checkmark"></span>
             <span className="block text-sm font-medium text-slate-700">Dinheiro</span>
           </label>
@@ -70,7 +70,7 @@ export default function Main() {
 
         <div className="radio-wrapper">
           <label className="radio-button">
-            <input type="radio" name="radio-group" id="option2" />
+            <input type="radio" name="radio-group" id="option2" value='card' />
             <span className="radio-checkmark"></span>
             <span className="block text-sm font-medium text-slate-700">Cartão</span>
           </label>
