@@ -3,7 +3,8 @@ import { Dispatch, SetStateAction, ChangeEvent, useState, useEffect } from 'reac
 import requestAPI from '@/services/requestAPI'
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import moment from 'moment';
+import moment from 'moment-timezone';
+import calculateConversion from '@/services/calculateConversion';
 
 export default function Main() {
 
@@ -23,9 +24,9 @@ export default function Main() {
     getDolar()
   }, [])
 
-  const DATE = moment(cotations.create_date).format('YYYY-MM-DD');
-  const HOUR = moment(cotations.create_date).format('HH:mm');
-  const FORMATED_DATE = format(new Date(DATE), 'dd \'de\' MMMM yyyy', { locale: ptBR });
+  const DATE = moment().tz('America/Sao_Paulo');
+  const HOUR = DATE.format('HH:mm');
+  const FORMATED_DATE = format(DATE.toDate(), 'dd \'de\' MMMM yyyy', { locale: ptBR });
 
   return (
     <main className="flex flex-col items-start justify-between p-24">
@@ -40,7 +41,7 @@ export default function Main() {
           />
         </div>
         <div className='ml-10'>
-          <p className='block text-sm font-medium text-slate-700'>{FORMATED_DATE} | {HOUR} UTC</p>
+          <p className='block text-sm font-medium text-slate-700'>{FORMATED_DATE} | {HOUR} UTC -3</p>
           <p className='block text-sm font-medium text-slate-700'>Dados de câmbio disponibilizados pela Morningstar.</p>
         </div>
       </section>
