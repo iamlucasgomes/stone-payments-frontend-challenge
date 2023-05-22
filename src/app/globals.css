@@ -127,7 +127,7 @@ body {
 
 /* Button */
 
-button:not(:disabled) {
+.button-converter {
   background-color: #008B57;
 }
 
@@ -148,4 +148,104 @@ button:disabled {
   /* Brand Colors/Primary */
 
   border: 1px solid #008B57;
+}
+
+/* Currency Card */
+
+
+/* Auto layout */
+
+.auto-layout-currency-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+
+  position: absolute;
+  width: 22.42vw;
+  height: 49.27vh;
+  left: 7vw;
+  top: 22vh;
+}
+
+/* O resultado do cálculo é */
+
+.header-currency-card {
+  width: 228px;
+  height: 32px;
+
+  /* Heading/Medium600 */
+
+  font-family: 'Sharon Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  display: flex;
+  align-items: center;
+
+  /* Blacks & Greys/darkGray2 */
+
+  color: #45505E;
+
+}
+
+/* value converted */
+
+.value-converted {
+  width: 305px;
+
+  /* Display/xxxLarge600 */
+
+  font-family: 'Sharon Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 12.96vh;
+  /* identical to box height, or 125% */
+
+  display: flex;
+  align-items: center;
+
+  /* Brand Colors/stoneGreen */
+
+  color: #00AB63;
+}
+
+.back-button {
+  background: #FFFFFF;
+  /* Blacks & Greys/mediumGray3 */
+  color: #2E3742;
+
+  border: 1px solid #D7E0EB;
+  /* dp-shadow/small */
+
+  box-shadow: 0px 8px 4px rgba(13, 17, 27, 0.08);
+  border-radius: 8px;
+}
+
+.radio-block {
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+  width: 300px;
+  height: 64px;
+}
+
+.radio-block-tipograpy {
+  line-height: 5.18vh;
+  width: 217px;
+  height: 64px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #6E7E90;
 }
