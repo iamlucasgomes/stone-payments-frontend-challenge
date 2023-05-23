@@ -377,8 +377,8 @@ body {
 
 .mask {
   position: absolute;
-  width: 22.79vw;
-  height: 50.24vh;
+  width: 310px;
+  height: 310px;
   left: 63vw;
   top: 33vh;
 }

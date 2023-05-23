@@ -165,14 +165,14 @@ export default function Main() {
         <Image
           src="/dollar.svg"
           alt="Stone Logo"
-          width={1440}
+          width={790}
           height={768}
           layout='responsive'
           priority
         />
       </div>
       <Image
-        className='mask'
+        className='mask sm:mask-sm'
         src="/graph.svg"
         alt='Graph'
         width={100}
