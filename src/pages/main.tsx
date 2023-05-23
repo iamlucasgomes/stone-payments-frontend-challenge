@@ -1,40 +1,37 @@
 import Image from 'next/image'
 import { Dispatch, SetStateAction, ChangeEvent, useState, useEffect } from 'react'
-import requestAPI from '@/services/requestAPI'
+import requestAPI from '@/services/fetcher'
 import { format, set } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import moment from 'moment-timezone';
+import fetcher from '@/services/fetcher';
+import useSWR from 'swr'
 import calculateConversion from '@/services/calculateConversion';
+
 
 export default function Main() {
 
   const [dolar, setDolar] = useState('');
   const [taxState, setTaxState] = useState('');
   const [typeOfPurchase, setTypeOfPurchase] = useState('money') as [string, Dispatch<SetStateAction<string>>];
-  const [cotations, setCotations] = useState<ResponseAPI>({} as ResponseAPI);
   const [convertedValue, setConvertedValue] = useState('');
   const [showResult, setShowResult] = useState(false);
+  const URL_BASE = 'https://economia.awesomeapi.com.br/json/last/';
+  const COIN = 'USD-BRL';
 
   const handleChange = (setState: Dispatch<SetStateAction<string>>) => (event: ChangeEvent<HTMLInputElement>) => {
     setState(event.target.value)
   };
 
-  const getDolar = async () => {
-    await requestAPI().then((response) => setCotations(response.USDBRL))
-  }
-
-  useEffect(() => {
-    getDolar()
-  }, [])
+  const { data, error, isLoading } = useSWR(`${URL_BASE}${COIN}`, fetcher)
 
   const handleConvert = () => {
-    getDolar();
     setConvertedValue(
       calculateConversion(
         typeOfPurchase,
         Number(dolar.replace(',', '.').replace('$', '')),
         Number(taxState.replace(',', '.').replace('%', '')),
-        +Number(cotations.bid).toFixed(2)
+        +Number(data.USDBRL.bid).toFixed(2)
       )
     );
     setShowResult(true);
@@ -154,7 +151,7 @@ export default function Main() {
               </p>
               <p className='radio-block-tipograpy'>
                 Cotação do dólar: <span className='font-normal'>
-                  $1,00 = {Number(cotations.ask).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                  $1,00 = {Number(data.USDBRL.ask).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                 </span>
               </p>
             </div>
