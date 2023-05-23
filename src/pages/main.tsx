@@ -8,6 +8,7 @@ import useSWR from 'swr'
 import calculateConversion from '@/services/calculateConversion';
 import CurrencyCard from '@/components/CurrencyCard';
 import CurrencyForm from '@/components/CurrencyForm';
+import Loader from '@/components/Loader';
 
 
 export default function Main() {
@@ -49,6 +50,7 @@ export default function Main() {
   const FORMATED_DATE = format(DATE.toDate(), 'dd \'de\' MMMM yyyy', { locale: ptBR });
 
   return (
+    isLoading ? <Loader /> :
     <main className="flex flex-col items-start justify-between p-24">
       <section className='flex justify-around'>
         <div>
